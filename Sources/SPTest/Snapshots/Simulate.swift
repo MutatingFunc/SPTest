@@ -13,6 +13,7 @@ public extension View {
     func simulate(_ device: SnapshotDevice, orientation: SnapshotDevice.Orientation = .portrait) -> some View {
         let points = device.points(for: orientation)
         let inset = device.safeAreaInsets(for: orientation)
+        let sizeClasses = device.sizeClasses(for: orientation)
         self
             .safeAreaPadding(.top, inset.top)
             .safeAreaPadding(.leading, inset.leading)
@@ -23,6 +24,8 @@ public extension View {
             .frame(width:  points.width, height: points.height)
             .ignoresSafeArea(.all, edges: .all)
             .fixedSize()
+            .environment(\.horizontalSizeClass, sizeClasses.horizontal)
+            .environment(\.verticalSizeClass, sizeClasses.vertical)
     }
 }
 

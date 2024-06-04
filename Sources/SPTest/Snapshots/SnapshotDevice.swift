@@ -73,7 +73,7 @@ public enum SnapshotDevice {
         }
     }
     
-    public func traitCollection(for orientation: Orientation) -> (horizontal: UserInterfaceSizeClass, vertical: UserInterfaceSizeClass) {
+    public func sizeClasses(for orientation: Orientation) -> (horizontal: UserInterfaceSizeClass, vertical: UserInterfaceSizeClass) {
         switch (self, orientation == .portrait) {
         case (.iPad13, _):
             (.regular, .regular)
